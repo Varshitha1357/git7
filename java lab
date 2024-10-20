@@ -1,1 +1,394 @@
+//WEEK 1
+1)program to display default value of all primitive data types
 
+CODE:
+public class DefaultValues {
+    // Define variables of each primitive data type
+    static byte b;
+    static short s;
+    static int i;
+    static long l;
+    static float f;
+    static double d;
+    static char c;
+    static boolean bool;
+
+    public static void main(String[] args) {
+        // Display default values of each primitive type
+        System.out.println("Default value of byte: " + b);
+        System.out.println("Default value of short: " + s);
+        System.out.println("Default value of int: " + i);
+        System.out.println("Default value of long: " + l);
+        System.out.println("Default value of float: " + f);
+        System.out.println("Default value of double: " + d);
+        System.out.println("Default value of char: " + c);
+        System.out.println("Default value of boolean: " + bool);
+    }
+}
+
+O/P:
+Default value of byte: 0
+Default value of short: 0
+Default value of int: 0
+Default value of long: 0
+Default value of float: 0.0
+Default value of double: 0.0
+Default value of char: NULL
+Default value of boolean: false
+
+2)Write a java program that display the roots of a quadratic equation ax2+bx=0. Calculate the 
+discriminate D and basing on value of D, describe the nature of root.
+
+CODE:
+import java.util.Scanner;
+
+public class QuadraticEquation {
+    public static void main(String[] args) {
+        // Create a scanner object to get input from the user
+        Scanner input = new Scanner(System.in);
+
+        // Input coefficients of the quadratic equation
+        System.out.print("Enter coefficient a: ");
+        double a = input.nextDouble();
+
+        System.out.print("Enter coefficient b: ");
+        double b = input.nextDouble();
+
+        System.out.print("Enter constant c: ");
+        double c = input.nextDouble();
+
+        // Calculate the discriminant D
+        double D = (b * b) - (4 * a * c);
+
+        System.out.println("Discriminant (D) = " + D);
+
+        // Determine the nature of the roots based on D
+        if (D > 0) {
+            // Two distinct real roots
+            double root1 = (-b + Math.sqrt(D)) / (2 * a);
+            double root2 = (-b - Math.sqrt(D)) / (2 * a);
+            System.out.println("The equation has two distinct real roots:");
+            System.out.println("Root 1 = " + root1);
+            System.out.println("Root 2 = " + root2);
+        } else if (D == 0) {
+            // One real root (roots are equal)
+            double root = -b / (2 * a);
+            System.out.println("The equation has one real root (repeated):");
+            System.out.println("Root = " + root);
+        } else {
+            // Complex roots
+            double realPart = -b / (2 * a);
+            double imaginaryPart = Math.sqrt(-D) / (2 * a);
+            System.out.println("The equation has complex roots:");
+            System.out.println("Root 1 = " + realPart + " + " + imaginaryPart + "i");
+            System.out.println("Root 2 = " + realPart + " - " + imaginaryPart + "i");
+        }
+        
+        input.close(); // Close the scanner
+    }
+}
+
+O/P:Enter coefficient a: 1
+Enter coefficient b: -7
+Enter constant c: 10
+Discriminant (D) = 9.0
+The equation has two distinct real roots:
+Root 1 = 5.0
+Root 2 = 2.0
+
+//WEEK 2
+
+1) program to search for an element in a given list of elements using binary search mechanism
+
+CODE:
+import java.util.Scanner;
+
+public class BinarySearchWithoutFunctions {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        // Input the number of elements
+        System.out.print("Enter the number of elements: ");
+        int n = input.nextInt();
+
+        // Input the elements one by one (sorted)
+        System.out.println("Enter the elements in sorted order: ");
+        int[] list = new int[n + 1]; // A helper array to store inputs
+        for (int i = 1; i <= n; i++) {
+            list[i] = input.nextInt();
+        }
+
+        // Input the key to search
+        System.out.print("Enter the element to search: ");
+        int key = input.nextInt();
+
+        // Binary search logic without functions
+        int first = 1, last = n, mid;
+        int position = -1; // Default value if element is not found
+
+        while (first <= last) {
+            mid = first + (last - first) / 2;
+
+            // Check if the key is at mid
+            if (list[mid] == key) {
+                position = mid;  // Element found at position mid
+                break;
+            }
+
+            // If the key is greater, ignore the left half
+            if (list[mid] < key) {
+                first = mid + 1;
+            }
+            // If the key is smaller, ignore the right half
+            else {
+                last = mid - 1;
+            }
+        }
+
+        // Output result
+        if (position == 1) {
+            System.out.println("Element found at position: " + position);
+        } else {
+            System.out.println("Element not found.");
+        }
+    }
+}
+
+O/P:
+Enter the number of elements: 5
+Enter the elements in sorted order: 
+10 20 30 40 50
+Enter the element to search: 30
+Element found at position: 3
+
+2)program to sort the  given list of elements using bubble sort
+
+CODE:
+import java.util.Scanner;
+public class BubbleSort {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        // Input the number of elements
+        System.out.print("Enter the number of elements: ");
+        int n = input.nextInt();
+
+        // Input the elements one by one
+        int[] arr = new int[n];
+        System.out.println("Enter the elements: ");
+        for (int i = 0; i < n; i++) {
+            arr[i] = input.nextInt();
+        }
+
+        // Bubble Sort logic directly in the main method
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    // Swap the elements
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+
+        // Output the sorted array
+        System.out.println("Sorted array: ");
+        for (int i = 0; i < n; i++) {
+            System.out.print(arr[i] + " ");
+        }
+
+       
+    }
+}
+
+ O/P:
+Enter the number of elements: 5
+Enter the elements: 
+64 34 25 12 22
+Sorted array: 
+12 22 25 34 64 
+
+//WEEK-3
+
+a) Write a JAVA program to implement class mechanism. Create a class, methods and invoke 
+them inside main method
+
+CODE:
+// Defining the class
+class MyClass {
+    
+    // A method to print a greeting message
+    public void greet() {
+        System.out.println("Hello, welcome to the class mechanism example!");
+    }
+    
+    // A method to add two numbers and return the result
+    public int addNumbers(int a, int b) {
+        return a + b;
+    }
+}
+
+public class MainClass {
+
+    public static void main(String[] args) {
+        // Creating an object of MyClass
+        MyClass obj = new MyClass();
+        
+        // Invoking the greet method
+        obj.greet();
+        
+        // Invoking the addNumbers method and storing the result
+        int result = obj.addNumbers(5, 7);
+        
+        // Printing the result
+        System.out.println("The sum of 5 and 7 is: " + result);
+    }
+}
+
+O/P:
+Hello, welcome to the class mechanism example!
+The sum of 5 and 7 is: 12
+
+b) Write a JAVA program implement method overloading
+
+CODE:
+class Calculator {
+
+    // Method to add two integers
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    // Overloaded method to add three integers
+    public int add(int a, int b, int c) {
+        return a + b + c;
+    }
+
+    // Overloaded method to add two double values
+    public double add(double a, double b) {
+        return a + b;
+    }
+}
+
+public class MainClass {
+
+    public static void main(String[] args) {
+        // Creating an object of Calculator class
+        Calculator calc = new Calculator();
+        
+        // Invoking the overloaded methods
+        int sum1 = calc.add(5, 10);          // Calls the method that adds two integers
+        int sum2 = calc.add(3, 7, 2);        // Calls the method that adds three integers
+        double sum3 = calc.add(4.5, 3.5);    // Calls the method that adds two double values
+        
+        // Printing the results
+        System.out.println("Sum of 5 and 10: " + sum1);
+        System.out.println("Sum of 3, 7 and 2: " + sum2);
+        System.out.println("Sum of 4.5 and 3.5: " + sum3);
+    }
+}
+
+O/P:
+Sum of 5 and 10: 15
+Sum of 3, 7 and 2: 12
+Sum of 4.5 and 3.5: 8.0
+
+c) Write a JAVA program to implement constructor.
+
+CODE:
+class Student {
+
+    String name;
+    int age;
+
+    // Constructor to initialize the object
+    public Student(String studentName, int studentAge) {
+        name = studentName;
+        age = studentAge;
+    }
+
+    // Method to display student details
+    public void displayDetails() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+    }
+}
+
+public class MainClass {
+
+    public static void main(String[] args) {
+        // Creating an object of Student class using the constructor
+        Student student1 = new Student("John", 20);
+        
+        // Displaying the student's details
+        student1.displayDetails();
+    }
+}
+
+O/P:
+Name: John
+Age: 20
+
+d)Write a JAVA program to implement constructor overloading
+
+CODE:
+class Student {
+
+    String name;
+    int age;
+    String course;
+
+    // Constructor with two parameters (name and age)
+    public Student(String studentName, int studentAge) {
+        name = studentName;
+        age = studentAge;
+        course = "Not Assigned";  // Default course if not provided
+    }
+
+    // Overloaded constructor with three parameters (name, age, and course)
+    public Student(String studentName, int studentAge, String studentCourse) {
+        name = studentName;
+        age = studentAge;
+        course = studentCourse;
+    }
+
+    // Method to display student details
+    public void displayDetails() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+        System.out.println("Course: " + course);
+    }
+}
+
+public class MainClass {
+
+    public static void main(String[] args) {
+        // Creating a student object using the constructor with two parameters
+        Student student1 = new Student("John", 20);
+        
+        // Creating a student object using the constructor with three parameters
+        Student student2 = new Student("Alice", 22, "Computer Science");
+        
+        // Displaying the details of both students
+        System.out.println("Student 1 details:");
+        student1.displayDetails();
+        
+        System.out.println("\nStudent 2 details:");
+        student2.displayDetails();
+    }
+}
+
+O/P:
+Student 1 details:
+Name: John
+Age: 20
+Course: Not Assigned
+
+Student 2 details:
+Name: Alice
+Age: 22
+Course: Computer Science
+
+
+//WEEK 4
