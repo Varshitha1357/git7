@@ -113,7 +113,7 @@ public class BinarySearch {
 
         // Input the elements one by one (sorted)
         System.out.println("Enter the elements in sorted order: ");
-        int[] list = new int[n + 1]; // A helper array to store inputs
+        int[] list = new int[n + 1]; // A helper array to store inputs (1-based indexing)
         for (int i = 1; i <= n; i++) {
             list[i] = input.nextInt();
         }
@@ -127,7 +127,7 @@ public class BinarySearch {
         int position = -1; // Default value if element is not found
 
         while (first <= last) {
-            mid = first + (last - first) / 2;
+            mid = (first + last) / 2; // Use mid = (first + last) / 2
 
             // Check if the key is at mid
             if (list[mid] == key) {
@@ -146,11 +146,13 @@ public class BinarySearch {
         }
 
         // Output result
-        if (position == 1) {
+        if (position != -1) {
             System.out.println("Element found at position: " + position);
         } else {
             System.out.println("Element not found.");
         }
+
+        input.close(); // Close the scanner
     }
 }
 
