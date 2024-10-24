@@ -211,6 +211,39 @@ Enter the elements:
 Sorted array: 
 12 22 25 34 64 
 
+3) Write a JAVA program using String Buffer to delete, remove character
+CODE:
+public class Main {
+    public static void main(String[] args) {
+        // Create a StringBuffer object
+        StringBuffer sb = new StringBuffer("Hello Linux");
+
+        System.out.println("Original String: " + sb);
+
+        // Delete characters from index 5 to 10 (removes " Linux")
+        sb.delete(5, 10);
+        System.out.println("After Deleting 'Linux': " + sb);
+
+        // Insert text at index 5
+        sb.insert(5, " Java");
+        System.out.println("After Inserting ' Java': " + sb);
+
+        // Append more text
+        sb.append(" World");
+        System.out.println("After Appending ' World': " + sb);
+
+        // Reverse the string
+        sb.reverse();
+        System.out.println("After Reversing: " + sb);
+    }
+}
+
+O/P:
+Original String: Hello Linux
+After Deleting 'Linux': Hello
+After Inserting ' Java': Hello Java
+After Appending ' World': Hello Java World
+After Reversing: dlroW avaJ olleH
 //WEEK-3
 
 a) Write a JAVA program to implement class mechanism. Create a class, methods and invoke 
