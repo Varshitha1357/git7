@@ -476,60 +476,39 @@ CODE:
 
 // Parent class
 class Animal {
-    String name = "Animal";
+    String name;
 
-    // Constructor of parent class
-    Animal() {
-        System.out.println("Animal constructor called");
+    Animal(String name) {
+        this.name = name;
     }
 
-    // Method in parent class
     void sound() {
-        System.out.println("Animals make sounds.");
+        System.out.println("Animal makes a sound");
     }
 }
 
 // Child class
 class Dog extends Animal {
-    String name = "Dog"; // Same variable as in parent class
-
-    // Constructor of child class
-    Dog() {
-        super(); // Calls parent class constructor
-        System.out.println("Dog constructor called");
+    
+    Dog(String name) {
+        super(name); // Calls the parent class constructor
     }
 
-    // Method in child class
-    void display() {
-        System.out.println("Name in child class: " + name);       // Refers to child class variable
-        System.out.println("Name in parent class: " + super.name); // Refers to parent class variable
-    }
-
-    // Method overriding
-    @Override
     void sound() {
-        super.sound(); // Calls parent class method
-        System.out.println("Dogs bark."); // Additional behavior in child class
+        super.sound(); // Calls the parent class method
+        System.out.println(name + " barks");
     }
 }
 
-public class SuperKeywordExample {
+// Main class to test the program
+public class Main {
     public static void main(String[] args) {
-        Dog dog = new Dog();  // Creating an object of Dog class
-
-        // Calling methods
-        dog.display();  // Access child and parent variables using super
-        dog.sound();    // Call overridden method with super
+        Dog myDog = new Dog("Buddy");
+        myDog.sound(); // Will call both the parent and child sound methods
     }
 }
 
 O/P:
-Animal constructor called
-Dog constructor called
-Name in child class: Dog
-Name in parent class: Animal
-Animals make sounds.
-Dogs bark.
-
-
+Animal makes a sound
+Buddy barks
 
