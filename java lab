@@ -545,3 +545,102 @@ O/P:
 Animal makes a sound
 Buddy barks
 
+b) Write a JAVA program to implement Interface. What kind of Inheritance can be achieved?
+
+CODE:
+// Interface Shape
+interface Shape {
+    double area();
+}
+
+// Rectangle class implementing Shape
+class Rectangle implements Shape {
+    private double length, width;
+
+    Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    public double area() {
+        return length * width;
+    }
+}
+
+// Circle class implementing Shape
+class Circle implements Shape {
+    private double radius;
+
+    Circle(double radius) {
+        this.radius = radius;
+    }
+
+    public double area() {
+        return Math.PI * radius * radius;
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        Shape rectangle = new Rectangle(5, 10);
+        Shape circle = new Circle(7);
+
+        System.out.println("Rectangle area: " + rectangle.area());
+        System.out.println("Circle area: " + circle.area());
+    }
+}
+
+O/P:
+Rectangle area: 50.0
+Circle area: 153.93804002589985
+
+C) Write a JAVA program that implements Runtime polymorphism
+
+CODE:
+
+// Base class Animal
+class Animal {
+    // Method to be overridden
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+// Derived class Dog extends Animal
+class Dog extends Animal {
+    // Overriding the sound method
+    @Override
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+// Derived class Cat extends Animal
+class Cat extends Animal {
+    // Overriding the sound method
+    @Override
+    void sound() {
+        System.out.println("Cat meows");
+    }
+}
+
+// Main class to test runtime polymorphism
+public class Main {
+    public static void main(String[] args) {
+        // Creating an Animal reference pointing to a Dog object
+        Animal myAnimal = new Dog();
+        myAnimal.sound();  // Calls the Dog's sound method
+
+        // Changing the Animal reference to point to a Cat object
+        myAnimal = new Cat();
+        myAnimal.sound();  // Calls the Cat's sound method
+    }
+}
+
+O/P:
+Dog barks
+Cat meows
+
+
+
