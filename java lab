@@ -642,5 +642,107 @@ O/P:
 Dog barks
 Cat meows
 
+//WEEK 6
+
+a) Write a JAVA program that describes exception handling mechanism
+
+CODE:
+
+public class ExceptionHandlingExample {
+
+    public static void main(String[] args) {
+        try {
+            int num1 = 10;
+            int num2 = 0;
+
+            // This line may cause an ArithmeticException (division by zero)
+            int result = divide(num1, num2);
+            System.out.println("Result: " + result);
+
+        } catch (ArithmeticException e) {
+            System.out.println("Exception caught: " + e.getMessage());
+        
+        } finally {
+            System.out.println("Execution completed.");
+        }
+    }
+
+    // Method to demonstrate use of throw keyword
+    public static int divide(int a, int b) {
+        if (b == 0) {
+            throw new ArithmeticException("Cannot divide by zero"); // throwing exception
+        }
+        return a / b;
+    }
+}
+
+O/P:
+Exception caught: Cannot divide by zero
+Execution completed.
+
+b) Write a JAVA program Illustrating Multiple catch clauses
+
+CODE:
+
+public class MultipleCatchExample {
+
+    public static void main(String[] args) {
+        try {
+            int[] numbers = {1, 2, 3};
+            int result = numbers[3] / 0;  // This line may cause an exception
+
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Exception caught: Array index is out of bounds.");
+        
+        } catch (ArithmeticException e) {
+            System.out.println("Exception caught: Division by zero.");
+        
+        } catch (Exception e) {
+            System.out.println("General exception caught: " + e.getMessage());
+        }
+        
+        System.out.println("Program execution continues...");
+    }
+}
+
+O/P:
+Exception caught: Division by zero.
+Program execution continues...
+
+c) Write a JAVA program for creation of Java Built-in Exception
+
+CODE:
+
+public class BuiltInExceptionExample {
+
+    public static void main(String[] args) {
+        try {
+            // 1. NullPointerException
+            String str = null;
+            System.out.println("String length: " + str.length());  // This line causes NullPointerException
+            
+        } catch (NullPointerException e) {
+            System.out.println("Caught NullPointerException: " + e.getMessage());
+        }
+
+        try {
+            // 2. NumberFormatException
+            String invalidNumber = "abc";
+            int number = Integer.parseInt(invalidNumber);  // This line causes NumberFormatException
+            
+        } catch (NumberFormatException e) {
+            System.out.println("Caught NumberFormatException: " + e.getMessage());
+        }
+
+        System.out.println("Program execution completed.");
+    }
+}
+
+O/P:
+Caught NullPointerException: null
+Caught NumberFormatException: For input string: "abc"
+Program execution completed.
+
+
 
 
