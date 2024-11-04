@@ -743,6 +743,39 @@ Caught NullPointerException: null
 Caught NumberFormatException: For input string: "abc"
 Program execution completed.
 
+Q) multiple inheritance through interfaces
 
+CODE:
+interface Animal {
+    void eat();
+}
+
+interface Pet {
+    void play();
+}
+
+class Dog implements Animal, Pet {
+    @Override
+    public void eat() {
+        System.out.println("This dog eats food.");
+    }
+
+    @Override
+    public void play() {
+        System.out.println("This dog plays fetch.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.eat();
+        dog.play();
+    }
+}
+
+O/P:
+This dog eats food.
+This dog plays fetch.
 
 
