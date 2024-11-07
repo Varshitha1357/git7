@@ -235,6 +235,10 @@ public class Main {
         // Reverse the string
         sb.reverse();
         System.out.println("After Reversing: " + sb);
+
+       // delete at specific character at specific index
+        sb.deletecharAt(0);
+        System.out.println("After deleting at index 0 :" + sb);
     }
 }
 
@@ -244,6 +248,7 @@ After Deleting 'Linux': Hello
 After Inserting ' Java': Hello Java
 After Appending ' World': Hello Java World
 After Reversing: dlroW avaJ olleH
+After deleting at index 0: lroW avaJ olleH
 //WEEK-3
 
 a) Write a JAVA program to implement class mechanism. Create a class, methods and invoke 
