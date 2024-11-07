@@ -506,6 +506,82 @@ This animal eats food.
 The dog barks.
 The puppy weeps.
 
+c) Write a JAVA program for abstract class to find areas of different shapes 
+
+CODE:
+abstract class Shape {
+    // Abstract method to calculate area
+    abstract double calculateArea();
+}
+
+class Rectangle extends Shape {
+    private double length;
+    private double width;
+
+    // Constructor
+    Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    // Implement calculateArea method for Rectangle
+    @Override
+    double calculateArea() {
+        return length * width;
+    }
+}
+
+class Circle extends Shape {
+    private double radius;
+
+    // Constructor
+    Circle(double radius) {
+        this.radius = radius;
+    }
+
+    // Implement calculateArea method for Circle
+    @Override
+    double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+}
+
+class Triangle extends Shape {
+    private double base;
+    private double height;
+
+    // Constructor
+    Triangle(double base, double height) {
+        this.base = base;
+        this.height = height;
+    }
+
+    // Implement calculateArea method for Triangle
+    @Override
+    double calculateArea() {
+        return 0.5 * base * height;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create objects of different shapes
+        Shape rectangle = new Rectangle(10, 5);
+        Shape circle = new Circle(7);
+        Shape triangle = new Triangle(8, 6);
+
+        // Calculate and display areas
+        System.out.println("Area of Rectangle: " + rectangle.calculateArea());
+        System.out.println("Area of Circle: " + circle.calculateArea());
+        System.out.println("Area of Triangle: " + triangle.calculateArea());
+    }
+}
+ O/P:
+Area of Rectangle: 50.0
+Area of Circle: 153.93804002589985
+Area of Triangle: 24.0
+
+
 //WEEK 5
 
 a) Write a JAVA program give example for “super” keyword
